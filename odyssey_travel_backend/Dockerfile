@@ -3,11 +3,12 @@ FROM eclipse-temurin:17-jdk-alpine AS build
 
 WORKDIR /app
 
-COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
+COPY pom.xml .
 COPY src src
 
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
 # ---------- STAGE 2: RUN ----------
