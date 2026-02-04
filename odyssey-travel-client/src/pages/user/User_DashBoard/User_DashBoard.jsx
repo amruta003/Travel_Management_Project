@@ -167,7 +167,7 @@ const UserDashboard = () => {
               >
                 <div className="aspect-[3/4] rounded-[2.5rem] overflow-hidden relative shadow-2xl transition-all duration-500 group-hover:shadow-blue-500/30">
                   <img
-                    src={pkg.imageUrl ? `${serverUrl}${pkg.imageUrl}` : "https://images.unsplash.com/photo-1519046904884-53103b34b206"}
+                    src={pkg.imageUrl ? `${import.meta.env.VITE_API_URL}${pkg.imageUrl}` : "https://images.unsplash.com/photo-1519046904884-53103b34b206"}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 grayscale-[0.3] group-hover:grayscale-0"
                     alt={pkg.title}
                   />

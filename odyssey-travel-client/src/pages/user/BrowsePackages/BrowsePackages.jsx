@@ -41,7 +41,7 @@ export default function BrowsePackages() {
                                     {/* Image Section */}
                                     <div className="relative h-64 overflow-hidden">
                                         <img
-                                            src={`http://localhost:8080${pkg.imageUrl}`}
+                                            src={`${import.meta.env.VITE_API_URL}${pkg.imageUrl}`}
                                             alt={pkg.title}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                             onError={(e) => { e.target.src = 'https://placehold.co/400x300?text=Explore+More' }}
