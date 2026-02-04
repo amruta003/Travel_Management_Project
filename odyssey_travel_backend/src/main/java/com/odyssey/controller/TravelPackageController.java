@@ -1,11 +1,11 @@
 package com.odyssey.controller;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,6 +30,9 @@ public class TravelPackageController {
 	@Autowired
 	private TravelPackageService travelService;
 
+	@Autowired
+	private Cloudinary cloudinary;
+
 	private final ObjectMapper objectmapper = new ObjectMapper();
 
 	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -39,20 +42,20 @@ public class TravelPackageController {
 		System.out.println("FILE = " + image.getOriginalFilename());
 		TravelPackageDto travelpackage;
 		try {
-			//Convert JSON string to DTO
+			// Convert JSON string to DTO
 			travelpackage = objectmapper.readValue(travelPackage, TravelPackageDto.class);
-			
-			//Save image to server
-			String uploadDir = "uploads/packages/";
-	        Files.createDirectories(Paths.get(uploadDir));
 
-	        String fileName =
-	                System.currentTimeMillis() + "_" + image.getOriginalFilename();
+			// Upload image to Cloudinary
+			Map uploadResult = cloudinary.uploader().upload(
+					image.getBytes(),
+					ObjectUtils.asMap(
+							"folder", "odyssey/packages",
+							"resource_type", "image"));
 
-	        Path filePath = Paths.get(uploadDir + fileName);
-	        Files.write(filePath, image.getBytes());
+			// Get Cloudinary URL
+			String imageUrl = (String) uploadResult.get("secure_url");
+			System.out.println("Cloudinary URL: " + imageUrl);
 
-	        String imageUrl = "/uploads/packages/" + fileName;
 			travelService.savePackage(travelpackage, imageUrl);
 			return ResponseEntity.ok("Package submitted for admin approval");
 		} catch (Exception e) {

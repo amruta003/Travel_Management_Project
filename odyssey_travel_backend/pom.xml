@@ -87,6 +87,13 @@
 			<version>3.2.5</version>
 		</dependency>
 
+		<!-- Cloudinary for cloud image storage -->
+		<dependency>
+			<groupId>com.cloudinary</groupId>
+			<artifactId>cloudinary-http44</artifactId>
+			<version>1.36.0</version>
+		</dependency>
+
 		<!-- Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
