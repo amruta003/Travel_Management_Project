@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
-
 import LandingPage from './pages/public/LandingPage/LandingPage';
 import Packages from './pages/public/Packages/Packages'
 import CustomerSignup from './pages/auth/CustomerSignup/CutomerSignup';
@@ -11,8 +10,8 @@ import AdminRoutes from './Routes/AdminRoutes';
 import AgentRoutes from './Routes/AgentRoutes';
 import UserRoutes from './Routes/UserRoutes';
 import AgentLayout from './Layouts/AgentLayout';
-import Agent_DashBoard from './pages/Agent/agent_DashBoard/Agents_DashBoard';
-import AddPackage from './pages/Agent/AddPackages/AddPackages';
+import Agent_DashBoard from './pages/agent/Agent_DashBoard/Agent_DashBoard';
+import AddPackage from './pages/agent/AddPackages/AddPackages';
 import AdminLogin from './pages/auth/AdminLogin/AdminLogin';
 import ForgotPassword from './pages/auth/ForgetPassword/ForgetPassword';
 import AboutUs from './pages/public/AboutUs/AboutUs';

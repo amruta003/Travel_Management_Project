@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import User_DashBoard from "../pages/User/User_DashBoard/User_DashBoard";
-import Payment from '../pages/User/Payment/payment';
-import UserBookingDetails from '../pages/User/UserBookingDetails/UserBookingDetails';
+import User_DashBoard from "../pages/user/User_DashBoard/User_DashBoard";
+import Payment from '../pages/user/Payment/payment';
+import UserBookingDetails from '../pages/user/UserBookingDetails/UserBookingDetails';
 import BrowsePackages from '../pages/user/BrowsePackages/BrowsePackages';
 // import Login from '../pages/User/userlogin/login';
 import Support from '../pages/user/Support/Support';

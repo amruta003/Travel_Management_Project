@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -23,8 +23,6 @@ const UserDashboard = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const serverUrl = "http://localhost:8080";
-
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
@@ -42,8 +40,8 @@ const UserDashboard = () => {
     try {
       setLoading(true);
       const [pkgsRes, bookingsRes] = await Promise.all([
-        axios.get(`${serverUrl}/api/packages`),
-        axios.get(`${serverUrl}/api/bookings/user/${userId}`)
+        api.get(`/api/packages`),
+        api.get(`/api/bookings/user/${userId}`)
       ]);
 
       setPackages(pkgsRes.data?.slice(0, 4) || []);

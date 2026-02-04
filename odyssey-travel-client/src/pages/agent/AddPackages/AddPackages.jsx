@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../../../api/axios";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -125,7 +125,7 @@ function AddPackages() {
     formData.append("image", images[0]);
 
     try {
-      const response = await axios.post('http://localhost:8080/api/packages', formData);
+      const response = await api.post('/api/packages', formData);
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Package submitted! Pending admin approval.");

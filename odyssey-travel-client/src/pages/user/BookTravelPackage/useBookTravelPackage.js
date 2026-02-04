@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-import axios from "axios";
+import api from "../../../api/axios";
 
 export const ageOptions = ["18-24 Years", "25-39 Years", "40-60 Years"];
 export const genderOptions = ["Male", "Female", "Other"];
@@ -36,7 +36,7 @@ export default function useBookTravelPackage() {
 
         const fetchPackageDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/packages/${id}`);
+                const response = await api.get(`/api/packages/${id}`);
                 setPackageData(response.data);
             } catch (error) {
                 console.error("Could not fetch package:", error);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 
 export default function useUserBookingDetails() {
     const [bookings, setBookings] = useState([]);
@@ -18,7 +18,7 @@ export default function useUserBookingDetails() {
     const fetchBookings = async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:8080/api/bookings/user/${userId}`);
+            const response = await api.get(`/api/bookings/user/${userId}`);
 
             const sortedBookings = response.data.sort((a, b) => {
 

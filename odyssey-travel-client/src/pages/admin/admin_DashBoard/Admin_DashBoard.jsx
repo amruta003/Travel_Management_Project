@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 import {
   ResponsiveContainer,
   LineChart,
@@ -78,7 +78,7 @@ function Admin_DashBoard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/stats/admin");
+        const res = await api.get("/api/stats/admin");
         if (res.data) setLiveStats(res.data);
       } catch (err) {
         console.error("Error fetching admin stats:", err);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from "../../../api/axios";
 import { useNavigate } from 'react-router-dom';
 
 function MyPackages() {
@@ -19,7 +19,7 @@ function MyPackages() {
 
   const fetchPackages = async (userId) => {
     try {
-      const resp = await axios.get(`http://localhost:8080/api/packages/agent/${userId}`);
+      const resp = await api.get(`/api/packages/agent/${userId}`);
       setPackages(resp.data || []);
     } catch (err) {
       console.error(err);

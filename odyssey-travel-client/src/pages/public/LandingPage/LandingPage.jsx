@@ -1,5 +1,5 @@
 
-import "./LandingPage.css";
+import "./Landingpage.css";
 import Navbar from "../../../components/Navbar/Navbar";
 import Destination from "../../../components/Destinations/Destination";
 import Itinerary from "../../../components/Itineraries/Itinerary";

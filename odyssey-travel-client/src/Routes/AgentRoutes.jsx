@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
-import AddPackage from "../pages/Agent/AddPackages/AddPackages";
-import Agent_DashBoard from "../pages/Agent/agent_DashBoard/Agents_DashBoard";
-import BookingOverview from "../pages/Agent/BookingsOverview/BookingOverview";
-import EditAboutUsPage from "../pages/Agent/EditAboutUs/EditAboutUsPage";
-import MyPackages from "../pages/Agent/MyPackages/MyPackages";
-import SupportTicket from "../pages/Agent/SupportTicket/SupportTicket";
+import AddPackage from "../pages/agent/AddPackages/AddPackages";
+import Agent_DashBoard from "../pages/agent/Agent_DashBoard/Agent_DashBoard";
+import BookingOverview from "../pages/agent/BookingsOverview/BookingOverview";
+import EditAboutUsPage from "../pages/agent/EditAboutUs/EditAboutUsPage";
+import MyPackages from "../pages/agent/MyPackages/MyPackages";
+import SupportTicket from "../pages/agent/SupportTicket/SupportTicket";
 // import AgentLogin from "../pages/Agent/AgentLogin/AgentLogin";
 
 import AgentLayout from "../Layouts/AgentLayout";

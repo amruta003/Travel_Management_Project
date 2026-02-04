@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import AdminLayout from "../Layouts/AdminLayout";
 
-import Admin_DashBoard from "../pages/Admin/admin_DashBoard/Admin_DashBoard";
-import AgentApproval from "../pages/Admin/AgentApproval/AgentApproval";
-import UserManagement from "../pages/Admin/UserManagement/UserManagement";
-import SupportTickets from "../pages/Admin/SupportTickets/SupportTickets";
-import TravelPackageApproval from "../pages/Admin/TravelPackageApproval/TravelPackageApproval";
+import Admin_DashBoard from "../pages/admin/admin_DashBoard/Admin_DashBoard";
+import AgentApproval from "../pages/admin/AgentApproval/AgentApproval";
+import UserManagement from "../pages/admin/UserManagement/UserManagement";
+import SupportTickets from "../pages/admin/SupportTickets/SupportTickets";
+import TravelPackageApproval from "../pages/admin/TravelPackageApproval/TravelPackageApproval";
 
 export default function AdminRoutes() {
   return (

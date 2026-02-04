@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadset,
@@ -27,13 +27,12 @@ const Support = () => {
   const [bookings, setBookings] = useState([]);
   const [selectedBookingId, setSelectedBookingId] = useState("");
 
-  const serverUrl = "http://localhost:8080";
 
   const fetchTickets = async (id) => {
     try {
       const [ticketsRes, bookingsRes] = await Promise.all([
-        axios.get(`${serverUrl}/api/support/user/${id}`),
-        axios.get(`${serverUrl}/api/bookings/user/${id}`)
+        api.get(`/api/support/user/${id}`),
+        api.get(`/api/bookings/user/${id}`)
       ]);
       setTickets(ticketsRes.data || []);
       setBookings(bookingsRes.data || []);
@@ -54,7 +53,7 @@ const Support = () => {
 
     try {
       setLoading(true);
-      await axios.post(`${serverUrl}/api/support`, {
+      await api.post(`/api/support`, {
         userId,
         subject,
         description,

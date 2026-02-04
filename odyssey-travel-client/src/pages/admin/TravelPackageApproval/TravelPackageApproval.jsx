@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 
 function TravelPackageApproval() {
   const [pendingPackages, setPendingPackages] = useState([]);
@@ -10,7 +10,7 @@ function TravelPackageApproval() {
   const fetchPending = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:8080/api/packages/admin/pending");
+      const response = await api.get("/api/packages/admin/pending");
       setPendingPackages(response.data);
       console.log(response.data);
     } catch (error) {
@@ -27,7 +27,7 @@ function TravelPackageApproval() {
   // Update package status (APPROVE or REJECT)
   const updateStatus = async (id, status) => {
     try {
-      await axios.post(`http://localhost:8080/api/packages/${id}/status/${status}`);
+      await api.post(`/api/packages/${id}/status/${status}`);
       setMessage(`Package ${status === 'APPROVED' ? 'Approved' : 'Rejected'}!`);
       fetchPending(); // Reload the list
     } catch (error) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 
 export default function useBrowsePackages() {
     const [packages, setPackages] = useState([]);
@@ -9,7 +9,7 @@ export default function useBrowsePackages() {
     const fetchPackages = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("http://localhost:8080/api/packages");
+            const response = await api.get("/api/packages");
             setPackages(response.data);
         } catch (error) {
             console.error("Error fetching packages:", error);

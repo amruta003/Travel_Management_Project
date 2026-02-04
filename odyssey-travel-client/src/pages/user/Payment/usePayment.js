@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../../../api/axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 export default function usePayment() {
@@ -54,7 +54,7 @@ export default function usePayment() {
     console.log("Sending booking payload:", payload);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/bookings", payload);
+      const response = await api.post("/api/bookings", payload);
       alert(response.data); // Status message from backend
 
       // Clear session

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from "../../../api/axios";
 import { useNavigate } from 'react-router-dom';
 
 function BookingOverview() {
@@ -19,7 +19,7 @@ function BookingOverview() {
 
   const fetchBookings = async (userId) => {
     try {
-      const resp = await axios.get(`http://localhost:8080/api/bookings/agent/${userId}`);
+      const resp = await api.get(`/api/bookings/agent/${userId}`);
       setBookings(resp.data || []);
     } catch (err) {
       console.error(err);

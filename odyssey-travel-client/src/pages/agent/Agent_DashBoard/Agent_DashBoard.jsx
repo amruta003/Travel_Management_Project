@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Line } from "react-chartjs-2";
-import axios from "axios";
+import api from "../../../api/axios";
 import {
   Chart as ChartJS,
   LineElement,
@@ -35,7 +35,6 @@ export default function Agent_DashBoard() {
   const [loading, setLoading] = useState(true);
   const [liveStats, setLiveStats] = useState({ totalEarnings: 0 });
 
-  const serverUrl = "http://localhost:8080"; // Base URL
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
@@ -54,10 +53,10 @@ export default function Agent_DashBoard() {
 
       // Parallel fetching
       const [pkgsRes, bookingsRes, ticketsRes, statsRes] = await Promise.all([
-        axios.get(`${serverUrl}/api/packages/agent/${userId}`),
-        axios.get(`${serverUrl}/api/bookings/agent/${userId}`),
-        axios.get(`${serverUrl}/api/support/agent/${userId}`),
-        axios.get(`${serverUrl}/api/stats/agent/${userId}`)
+        api.get(`/api/packages/agent/${userId}`),
+        api.get(`/api/bookings/agent/${userId}`),
+        api.get(`/api/support/agent/${userId}`),
+        api.get(`/api/stats/agent/${userId}`)
       ]);
 
       setPackages(pkgsRes.data || []);

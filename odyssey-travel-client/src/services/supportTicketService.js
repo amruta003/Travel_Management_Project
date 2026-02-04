@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_BASE_URL = "http://localhost:8080/api/support";
+import api from "../api/axios";
 
 //============== RAISE SUPPORT TICKET ================
 
@@ -19,11 +17,11 @@ export const raiseSupportTicket = async ({
         priority,
     };
 
-    if(bookingId) {
+    if (bookingId) {
         params.bookingId = bookingId;
     }
 
-    const response = await axios.post(API_BASE_URL,null,{
+    const response = await api.post('/api/support', null, {
         params,
     });
     return response.data;
@@ -31,7 +29,7 @@ export const raiseSupportTicket = async ({
 
 // =============GET USER TICKETS==============
 
-export const getUserSupportTickets = async(userId) => {
-    const response = await axios.get(`${API_BASE_URL}/user/${userId}`);
+export const getUserSupportTickets = async (userId) => {
+    const response = await api.get(`/api/support/user/${userId}`);
     return response.data;
 };

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 
-const API_URL = "http://localhost:8080/api/v1/users";
+// Removed hardcoded URL const
+// const API_URL = "http://localhost:8080/api/v1/users";
 
 export default function useUserManagement() {
     const [users, setUsers] = useState([]);
@@ -13,7 +14,7 @@ export default function useUserManagement() {
         setLoading(true);
         try {
             // Fetch only CLIENT role users
-            const response = await axios.get(`${API_URL}/role/CLIENT`);
+            const response = await api.get("/api/v1/users/role/CLIENT");
             // Map backend data to frontend format
             const mappedUsers = response.data.map(user => ({
                 id: user.id,
@@ -36,7 +37,7 @@ export default function useUserManagement() {
     // Function to block or unblock a user
     const handleToggleBlock = async (id, currentBlockedStatus) => {
         try {
-            await axios.put(`${API_URL}/${id}/block?blocked=${!currentBlockedStatus}`);
+            await api.put(`/api/v1/users/${id}/block?blocked=${!currentBlockedStatus}`);
             fetchUsers(); // Refresh the list after update
         } catch (error) {
             console.error("Block/Unblock error:", error);

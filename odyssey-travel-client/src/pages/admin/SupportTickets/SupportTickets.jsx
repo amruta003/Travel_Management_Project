@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../../api/axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeadset,
@@ -27,7 +27,7 @@ const SupportTickets = () => {
   const fetchTickets = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:8080/api/support/all");
+      const res = await api.get("/api/support/all");
       setTickets(res.data || []);
       setErrorMessage("");
     } catch (err) {
@@ -41,8 +41,8 @@ const SupportTickets = () => {
   const updateStatus = async (ticketId, newStatus) => {
     try {
       setUpdatingId(ticketId);
-      await axios.put(
-        `http://localhost:8080/api/support/${ticketId}/status/${newStatus}`
+      await api.put(
+        `/api/support/${ticketId}/status/${newStatus}`
       );
       setSuccessMessage(`Ticket #${ticketId} updated to ${newStatus} ✅`);
       setTimeout(() => setSuccessMessage(""), 3000);
